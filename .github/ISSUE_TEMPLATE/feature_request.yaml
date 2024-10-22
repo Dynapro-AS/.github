@@ -1,9 +1,8 @@
 ---
 name: Feature Request
 description: Suggest an improvement or new feature
-labels:  ["enhancement"]
+labels: ["enhancement"]
 body:
-
   - type: textarea
     attributes:
       label: Description
@@ -25,7 +24,7 @@ body:
     validations:
       required: false
 
-      - type: input
+  - type: input
     id: business-central-task-id
     attributes:
       label: Business Central Task ID

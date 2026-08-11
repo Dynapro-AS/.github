@@ -1,0 +1,50 @@
+name: XLF Translation Pipeline
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**/*.xlf'
+      - '**/*.al'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  xlf-translation:
+    name: Translate and review XLF files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Count incomplete translation entries
+        id: check
+        run: |
+          # matches all needs-translation, needs-review-translation, needs-adaptation, needs-l10n, etc.
+          count=$(grep -r 'state="needs-' --include="*.xlf" . | wc -l)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger /translateXlfFiles
+        if: steps.check.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment "${{ github.event.pull_request.number }}" \
+            --repo "${{ github.repository }}" \
+            --body "@github-copilot /translateXlfFiles"
+
+      - name: Block merge — translations pending
+        if: steps.check.outputs.count != '0'
+        run: |
+          echo "::error::${{ steps.check.outputs.count }} incomplete XLF entries (needs-translation/review/adaptation). /translateXlfFiles triggered — re-run after agent commits translations."
+          exit 1
+
+      - name: Trigger /reviewXlfFiles
+        if: steps.check.outputs.count == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment "${{ github.event.pull_request.number }}" \
+            --repo "${{ github.repository }}" \
+            --body "@github-copilot /reviewXlfFiles"

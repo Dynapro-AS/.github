@@ -1,0 +1,15 @@
+- name: needs-information
+  color: d73a4a
+  description: More information required
+
+- name: ready-for-spec
+  color: 0e8a16
+  description: Ready for specification work
+
+- name: requirements-review
+  color: 1d76db
+  description: Requirements review required
+
+- name: design-review
+  color: 5319e7
+  description: Architecture review required

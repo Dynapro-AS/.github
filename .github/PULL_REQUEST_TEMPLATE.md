@@ -24,6 +24,10 @@ What changed and why?
 
 - [ ] XLF files refreshed (`NAB: Refresh XLF files from g.xlf`)
 - [ ] Translation gate passed (CI runs `/translateXlfFiles` → `/reviewXlfFiles` automatically)
+- Completed translations: [languages/XLF files, or Not applicable]
+- Missing or deferred translations: [languages/XLF files and reason, or None]
+
+<!-- Agents must complete both translation-status lines. Do not leave missing translations undocumented. -->
 
 ## Review checklist
 

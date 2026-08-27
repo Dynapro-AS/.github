@@ -29,6 +29,18 @@ What changed and why?
 
 <!-- Agents must complete both translation-status lines. Do not leave missing translations undocumented. -->
 
+## Smoke test / customer sandbox
+
+- [ ] Not required for this change
+- [ ] Required in customer sandbox
+- [ ] Sandbox environment: [customer sandbox name / URL or N/A]
+- [ ] Smoke test scenario(s): [brief list of critical flows, business process, or regression checks]
+- [ ] Validation performed by: [name / team]
+- [ ] Result: [Pass / Fail / Blocked]
+- [ ] Issues found: [none / details and follow-up actions]
+
+If sandbox validation is needed, include the essential scenarios to validate the changed behavior in a real customer context and record whether the result was successful or blocked.
+
 ## Review checklist
 
 - [ ] Scope matches approved specification

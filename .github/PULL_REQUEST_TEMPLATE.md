@@ -43,6 +43,7 @@ If sandbox validation is needed, include the essential scenarios to validate the
 
 ## Review checklist
 
+- [ ] Product owner approval obtained (required for AppSource apps; not applicable otherwise)
 - [ ] Scope matches approved specification
 - [ ] No invented behavior
 - [ ] BCApps pattern checked where relevant

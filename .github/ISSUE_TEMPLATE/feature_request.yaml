@@ -8,6 +8,7 @@ body:
     id: business-problem
     attributes:
       label: Business problem
+      description: What goes wrong or is hard today, who is affected, and what the impact is. Describe the problem, not the solution.
     validations:
       required: true
   - type: textarea
